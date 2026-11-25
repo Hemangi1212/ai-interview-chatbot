@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Interview Coach – AI/ML Interview Question Chatbot</title>
+  <style>
+    /* To use your own background photo, replace the url(...) in --bg-image with url("your-image.jpg") */
+    :root {
+      --bg-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 900%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%230d1124%22/%3E%3Cstop offset=%22.55%22 stop-color=%22%23171d3f%22/%3E%3Cstop offset=%221%22 stop-color=%22%232a1d52%22/%3E%3C/linearGradient%3E%3CradialGradient id=%22a%22 cx=%22.2%22 cy=%22.15%22 r=%22.6%22%3E%3Cstop offset=%220%22 stop-color=%22%234458e6%22 stop-opacity=%22.45%22/%3E%3Cstop offset=%221%22 stop-color=%22%234458e6%22 stop-opacity=%220%22/%3E%3C/radialGradient%3E%3CradialGradient id=%22b%22 cx=%22.85%22 cy=%22.9%22 r=%22.55%22%3E%3Cstop offset=%220%22 stop-color=%22%23f5b942%22 stop-opacity=%22.22%22/%3E%3Cstop offset=%221%22 stop-color=%22%23f5b942%22 stop-opacity=%220%22/%3E%3C/radialGradient%3E%3CradialGradient id=%22n%22%3E%3Cstop offset=%220%22 stop-color=%22%23ffffff%22/%3E%3Cstop offset=%22.35%22 stop-color=%22%239fb0ff%22/%3E%3Cstop offset=%221%22 stop-color=%22%234458e6%22 stop-opacity=%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width=%221600%22 height=%22900%22 fill=%22url%28%23g%29%22/%3E%3Crect width=%221600%22 height=%22900%22 fill=%22url%28%23a%29%22/%3E%3Crect width=%221600%22 height=%22900%22 fill=%22url%28%23b%29%22/%3E%3Cg stroke=%22%238c9bff%22 stroke-opacity=%22.16%22 stroke-width=%221.2%22%3E%3Cline x1=%22159%22 y1=%22170%22 x2=%22457%22 y2=%22136%22/%3E%3Cline x1=%22159%22 y1=%22170%22 x2=%22514%22 y2=%22285%22/%3E%3Cline x1=%22159%22 y1=%22170%22 x2=%22454%22 y2=%22369%22/%3E%3Cline x1=%22159%22 y1=%22170%22 x2=%22505%22 y2=%22489%22/%3E%3Cline x1=%22159%22 y1=%22170%22 x2=%22461%22 y2=%22756%22/%3E%3Cline x1=%22146%22 y1=%22355%22 x2=%22457%22 y2=%22136%22/%3E%3Cline x1=%22146%22 y1=%22355%22 x2=%22454%22 y2=%22369%22/%3E%3Cline x1=%22146%22 y1=%22355%22 x2=%22505%22 y2=%22489%22/%3E%3Cline x1=%22208%22 y1=%22514%22 x2=%22457%22 y2=%22136%22/%3E%3Cline x1=%22208%22 y1=%22514%22 x2=%22454%22 y2=%22369%22/%3E%3Cline x1=%22208%22 y1=%22514%22 x2=%22461%22 y2=%22756%22/%3E%3Cline x1=%22186%22 y1=%22696%22 x2=%22514%22 y2=%22285%22/%3E%3Cline x1=%22186%22 y1=%22696%22 x2=%22454%22 y2=%22369%22/%3E%3Cline x1=%22186%22 y1=%22696%22 x2=%22458%22 y2=%22639%22/%3E%3Cline x1=%22186%22 y1=%22696%22 x2=%22461%22 y2=%22756%22/%3E%3Cline x1=%22457%22 y1=%22136%22 x2=%22814%22 y2=%22118%22/%3E%3Cline x1=%22457%22 y1=%22136%22 x2=%22834%22 y2=%22681%22/%3E%3Cline x1=%22514%22 y1=%22285%22 x2=%22788%22 y2=%22314%22/%3E%3Cline x1=%22514%22 y1=%22285%22 x2=%22834%22 y2=%22681%22/%3E%3Cline x1=%22454%22 y1=%22369%22 x2=%22814%22 y2=%22118%22/%3E%3Cline x1=%22454%22 y1=%22369%22 x2=%22834%22 y2=%22681%22/%3E%3Cline x1=%22454%22 y1=%22369%22 x2=%22766%22 y2=%22782%22/%3E%3Cline x1=%22505%22 y1=%22489%22 x2=%22832%22 y2=%22198%22/%3E%3Cline x1=%22505%22 y1=%22489%22 x2=%22788%22 y2=%22314%22/%3E%3Cline x1=%22505%22 y1=%22489%22 x2=%22840%22 y2=%22460%22/%3E%3Cline x1=%22505%22 y1=%22489%22 x2=%22767%22 y2=%22570%22/%3E%3Cline x1=%22505%22 y1=%22489%22 x2=%22834%22 y2=%22681%22/%3E%3Cline x1=%22458%22 y1=%22639%22 x2=%22814%22 y2=%22118%22/%3E%3Cline x1=%22458%22 y1=%22639%22 x2=%22832%22 y2=%22198%22/%3E%3Cline x1=%22458%22 y1=%22639%22 x2=%22788%22 y2=%22314%22/%3E%3Cline x1=%22458%22 y1=%22639%22 x2=%22767%22 y2=%22570%22/%3E%3Cline x1=%22458%22 y1=%22639%22 x2=%22834%22 y2=%22681%22/%3E%3Cline x1=%22458%22 y1=%22639%22 x2=%22766%22 y2=%22782%22/%3E%3Cline x1=%22461%22 y1=%22756%22 x2=%22840%22 y2=%22460%22/%3E%3Cline x1=%22461%22 y1=%22756%22 x2=%22767%22 y2=%22570%22/%3E%3Cline x1=%22461%22 y1=%22756%22 x2=%22834%22 y2=%22681%22/%3E%3Cline x1=%22814%22 y1=%22118%22 x2=%221087%22 y2=%22262%22/%3E%3Cline x1=%22814%22 y1=%22118%22 x2=%221123%22 y2=%22374%22/%3E%3Cline x1=%22814%22 y1=%22118%22 x2=%221139%22 y2=%22493%22/%3E%3Cline x1=%22814%22 y1=%22118%22 x2=%221143%22 y2=%22620%22/%3E%3Cline x1=%22814%22 y1=%22118%22 x2=%221141%22 y2=%22760%22/%3E%3Cline x1=%22832%22 y1=%22198%22 x2=%221087%22 y2=%22262%22/%3E%3Cline x1=%22832%22 y1=%22198%22 x2=%221123%22 y2=%22374%22/%3E%3Cline x1=%22832%22 y1=%22198%22 x2=%221139%22 y2=%22493%22/%3E%3Cline x1=%22832%22 y1=%22198%22 x2=%221143%22 y2=%22620%22/%3E%3Cline x1=%22788%22 y1=%22314%22 x2=%221123%22 y2=%22374%22/%3E%3Cline x1=%22788%22 y1=%22314%22 x2=%221141%22 y2=%22760%22/%3E%3Cline x1=%22840%22 y1=%22460%22 x2=%221143%22 y2=%22620%22/%3E%3Cline x1=%22840%22 y1=%22460%22 x2=%221141%22 y2=%22760%22/%3E%3Cline x1=%22767%22 y1=%22570%22 x2=%221075%22 y2=%22113%22/%3E%3Cline x1=%22767%22 y1=%22570%22 x2=%221123%22 y2=%22374%22/%3E%3Cline x1=%22767%22 y1=%22570%22 x2=%221139%22 y2=%22493%22/%3E%3Cline x1=%22767%22 y1=%22570%22 x2=%221143%22 y2=%22620%22/%3E%3Cline x1=%22767%22 y1=%22570%22 x2=%221141%22 y2=%22760%22/%3E%3Cline x1=%22834%22 y1=%22681%22 x2=%221075%22 y2=%22113%22/%3E%3Cline x1=%22834%22 y1=%22681%22 x2=%221087%22 y2=%22262%22/%3E%3Cline x1=%22834%22 y1=%22681%22 x2=%221123%22 y2=%22374%22/%3E%3Cline x1=%22834%22 y1=%22681%22 x2=%221139%22 y2=%22493%22/%3E%3Cline x1=%22834%22 y1=%22681%22 x2=%221143%22 y2=%22620%22/%3E%3Cline x1=%22834%22 y1=%22681%22 x2=%221141%22 y2=%22760%22/%3E%3Cline x1=%22766%22 y1=%22782%22 x2=%221075%22 y2=%22113%22/%3E%3Cline x1=%22766%22 y1=%22782%22 x2=%221139%22 y2=%22493%22/%3E%3Cline x1=%22766%22 y1=%22782%22 x2=%221143%22 y2=%22620%22/%3E%3Cline x1=%22766%22 y1=%22782%22 x2=%221141%22 y2=%22760%22/%3E%3Cline x1=%221075%22 y1=%22113%22 x2=%221403%22 y2=%22202%22/%3E%3Cline x1=%221075%22 y1=%22113%22 x2=%221454%22 y2=%22336%22/%3E%3Cline x1=%221087%22 y1=%22262%22 x2=%221403%22 y2=%22202%22/%3E%3Cline x1=%221087%22 y1=%22262%22 x2=%221454%22 y2=%22336%22/%3E%3Cline x1=%221087%22 y1=%22262%22 x2=%221404%22 y2=%22546%22/%3E%3Cline x1=%221087%22 y1=%22262%22 x2=%221392%22 y2=%22713%22/%3E%3Cline x1=%221123%22 y1=%22374%22 x2=%221403%22 y2=%22202%22/%3E%3Cline x1=%221123%22 y1=%22374%22 x2=%221454%22 y2=%22336%22/%3E%3Cline x1=%221123%22 y1=%22374%22 x2=%221392%22 y2=%22713%22/%3E%3Cline x1=%221139%22 y1=%22493%22 x2=%221403%22 y2=%22202%22/%3E%3Cline x1=%221139%22 y1=%22493%22 x2=%221404%22 y2=%22546%22/%3E%3Cline x1=%221139%22 y1=%22493%22 x2=%221392%22 y2=%22713%22/%3E%3Cline x1=%221143%22 y1=%22620%22 x2=%221403%22 y2=%22202%22/%3E%3Cline x1=%221143%22 y1=%22620%22 x2=%221454%22 y2=%22336%22/%3E%3Cline x1=%221143%22 y1=%22620%22 x2=%221404%22 y2=%22546%22/%3E%3Cline x1=%221141%22 y1=%22760%22 x2=%221404%22 y2=%22546%22/%3E%3Cline x1=%221141%22 y1=%22760%22 x2=%221392%22 y2=%22713%22/%3E%3C/g%3E%3Ccircle cx=%22159%22 cy=%22170%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22159%22 cy=%22170%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22146%22 cy=%22355%22 r=%2221%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22146%22 cy=%22355%22 r=%227%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22208%22 cy=%22514%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22208%22 cy=%22514%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22186%22 cy=%22696%22 r=%2221%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22186%22 cy=%22696%22 r=%227%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22457%22 cy=%22136%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22457%22 cy=%22136%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22514%22 cy=%22285%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22514%22 cy=%22285%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22454%22 cy=%22369%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22454%22 cy=%22369%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22505%22 cy=%22489%22 r=%2227%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22505%22 cy=%22489%22 r=%229%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22458%22 cy=%22639%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22458%22 cy=%22639%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22461%22 cy=%22756%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22461%22 cy=%22756%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22814%22 cy=%22118%22 r=%2227%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22814%22 cy=%22118%22 r=%229%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22832%22 cy=%22198%22 r=%2221%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22832%22 cy=%22198%22 r=%227%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22788%22 cy=%22314%22 r=%2215%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22788%22 cy=%22314%22 r=%225%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22840%22 cy=%22460%22 r=%2215%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22840%22 cy=%22460%22 r=%225%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22767%22 cy=%22570%22 r=%2221%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22767%22 cy=%22570%22 r=%227%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22834%22 cy=%22681%22 r=%2227%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22834%22 cy=%22681%22 r=%229%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22766%22 cy=%22782%22 r=%2221%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%22766%22 cy=%22782%22 r=%227%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221075%22 cy=%22113%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221075%22 cy=%22113%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221087%22 cy=%22262%22 r=%2221%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221087%22 cy=%22262%22 r=%227%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221123%22 cy=%22374%22 r=%2227%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221123%22 cy=%22374%22 r=%229%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221139%22 cy=%22493%22 r=%2221%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221139%22 cy=%22493%22 r=%227%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221143%22 cy=%22620%22 r=%2221%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221143%22 cy=%22620%22 r=%227%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221141%22 cy=%22760%22 r=%2215%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221141%22 cy=%22760%22 r=%225%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221403%22 cy=%22202%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221403%22 cy=%22202%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221454%22 cy=%22336%22 r=%2215%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221454%22 cy=%22336%22 r=%225%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221404%22 cy=%22546%22 r=%2218%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221404%22 cy=%22546%22 r=%226%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3Ccircle cx=%221392%22 cy=%22713%22 r=%2227%22 fill=%22url%28%23n%29%22 opacity=%22.28%22/%3E%3Ccircle cx=%221392%22 cy=%22713%22 r=%229%22 fill=%22%23c9d3ff%22 opacity=%22.85%22/%3E%3C/svg%3E");
+      --ink: #eef0ff;
+      --mute: #aab3dd;
+      --glass: rgba(16, 20, 44, .72);
+      --line: rgba(255, 255, 255, .14);
+      --a1: #4458e6;
+      --a2: #8b5cf6;
+      --amber: #f5b942;
+      --warn: #ff8a65
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: #0d1124 var(--bg-image) center/cover no-repeat fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px
+    }
+
+    .app {
+      width: 100%;
+      max-width: 820px;
+      height: 100%;
+      max-height: 900px;
+      display: flex;
+      flex-direction: column;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px)
+    }
+
+    header {
+      background: linear-gradient(120deg, var(--a1), var(--a2));
+      color: #fff;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px
+    }
+
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .18);
+      border: 2px solid rgba(255, 255, 255, .55);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: .5px
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+      font-weight: 650
+    }
+
+    header p {
+      margin: 3px 0 0;
+      font-size: 13px;
+      opacity: .85
+    }
+
+    .status {
+      margin-left: auto;
+      font-size: 13px;
+      background: rgba(0, 0, 0, .25);
+      padding: 5px 12px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .status i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #5eead4;
+      display: inline-block;
+      box-shadow: 0 0 8px #5eead4
+    }
+
+    #chat {
+      flex: 1;
+      overflow-y: auto;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: #4a5499 transparent
+    }
+
+    .msg {
+      max-width: 82%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      line-height: 1.55;
+      font-size: 15.5px;
+      white-space: pre-wrap
+    }
+
+    .bot {
+      background: rgba(255, 255, 255, .09);
+      border: 1px solid var(--line);
+      align-self: flex-start;
+      border-top-left-radius: 5px
+    }
+
+    .user {
+      background: linear-gradient(135deg, var(--a1), var(--a2));
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 5px;
+      box-shadow: 0 6px 18px rgba(68, 88, 230, .35)
+    }
+
+    .warn {
+      border-color: var(--warn);
+      background: rgba(255, 138, 101, .14);
+      color: #ffd9cc
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 22px;
+      border-top: 1px solid var(--line);
+      background: rgba(255, 255, 255, .03)
+    }
+
+    .chips button {
+      border: 1px solid rgba(245, 185, 66, .7);
+      background: rgba(245, 185, 66, .08);
+      color: var(--amber);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13.5px;
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .chips button:hover,
+    .chips button:focus-visible {
+      background: var(--amber);
+      color: #1b1b2f;
+      outline: none;
+      transform: translateY(-1px)
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      padding: 14px 22px;
+      border-top: 1px solid var(--line)
+    }
+
+    input {
+      flex: 1;
+      padding: 13px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-size: 15.5px;
+      background: rgba(255, 255, 255, .08);
+      color: var(--ink)
+    }
+
+    input::placeholder {
+      color: #8f99c9
+    }
+
+    input:focus {
+      outline: 2px solid var(--a2);
+      border-color: var(--a2)
+    }
+
+    form button {
+      background: linear-gradient(135deg, var(--amber), #f59e0b);
+      color: #1b1b2f;
+      font-weight: 650;
+      border: 0;
+      border-radius: 14px;
+      padding: 0 26px;
+      font-size: 15.5px;
+      cursor: pointer;
+      transition: filter .15s
+    }
+
+    form button:hover {
+      filter: brightness(1.08)
+    }
+
+    form button:disabled {
+      opacity: .55;
+      cursor: wait
+    }
+
+    .note {
+      font-size: 12px;
+      text-align: center;
+      color: var(--mute);
+      padding: 0 22px 14px
+    }
+
+    .dots span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin: 0 2px;
+      border-radius: 50%;
+      background: var(--amber);
+      animation: b 1s infinite
+    }
+
+    .dots span:nth-child(2) {
+      animation-delay: .15s
+    }
+
+    .dots span:nth-child(3) {
+      animation-delay: .3s
+    }
+
+    @keyframes b {
+
+      0%,
+      80%,
+      100% {
+        opacity: .25
+      }
+
+      40% {
+        opacity: 1
+      }
+    }
+
+    @media (max-width:600px) {
+      body {
+        padding: 0
+      }
+
+      .app {
+        border-radius: 0;
+        max-height: none;
+        border: 0
+      }
+
+      .status {
+        display: none
+      }
+
+      .msg {
+        max-width: 92%
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .dots span {
+        animation: none
+      }
+
+      .chips button {
+        transition: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">AI</div>
+      <div>
+        <h1>AI Interview Coach</h1>
+        <p>Practice AI / ML interview questions</p>
+      </div>
+      <div class="status"><i></i>Online</div>
+    </header>
+    <div id="chat" aria-live="polite"></div>
+    <div class="chips" id="chips"></div>
+    <form id="f">
+      <input id="q" autocomplete="off" placeholder="Type your answer or ask a concept… e.g. what is overfitting"
+        aria-label="Message">
+      <button type="submit" id="send">Send</button>
+    </form>
+    <div class="note">Practice tool powered by Gemini AI. Answers may contain mistakes, so verify important facts.</div>
+  </div>
+
+  <script>
+    const chat = document.getElementById("chat"), input = document.getElementById("q"), sendBtn = document.getElementById("send");
+    const history = [];
+    function add(text, who, extra) { const d = document.createElement("div"); d.className = "msg " + who + (extra ? " " + extra : ""); d.textContent = text; chat.appendChild(d); chat.scrollTop = chat.scrollHeight; return d; }
+    async function send(text) {
+      text = text.trim(); if (!text) return;
+      add(text, "user"); input.value = ""; sendBtn.disabled = true;
+      const typing = add("", "bot"); typing.innerHTML = '<span class="dots"><span></span><span></span><span></span></span>';
+      try {
+        const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text, history }), signal: AbortSignal.timeout(90000) });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.error || "Error");
+        typing.textContent = d.reply;
+        history.push({ role: "user", text }, { role: "model", text: d.reply });
+      } catch (e) { typing.textContent = "⚠️ " + e.message; typing.classList.add("warn"); }
+      sendBtn.disabled = false; input.focus(); chat.scrollTop = chat.scrollHeight;
+    }
+    const CHIPS = [
+      ["Easy question", "Ask me an Easy AI interview question."],
+      ["Medium question", "Ask me a Medium machine learning interview question."],
+      ["Hard question", "Ask me a Hard deep learning interview question."],
+      ["GenAI / LLM", "Ask me a Generative AI and LLM interview question."],
+      ["NLP", "Ask me an NLP interview question."],
+      ["Hint", "Give me a hint for the current question."],
+      ["Next", "Next question, please."]
+    ];
+    const chips = document.getElementById("chips");
+    CHIPS.forEach(([label, prompt]) => { const b = document.createElement("button"); b.type = "button"; b.textContent = label; b.onclick = () => send(prompt); chips.appendChild(b); });
+    document.getElementById("f").addEventListener("submit", e => { e.preventDefault(); send(input.value); });
+    add("Hi! I'm your AI Interview Coach 🎯 Click a button to get a question, type your answer for a score, or ask me any AI/ML concept.", "bot");
+    input.focus();
+  </script>
+</body>
+
+</html>
